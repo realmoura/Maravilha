@@ -1,0 +1,1470 @@
+/* =====================================================
+   CONFIGURAÇÕES GERAIS
+===================================================== */
+
+:root {
+
+    --black: #0b0b0b;
+    --dark: #111111;
+    --dark-soft: #171717;
+
+    --white: #f5f3ef;
+    --white-soft: #c9c5bd;
+
+    --gold: #c8a96b;
+    --gold-light: #e4cc9a;
+
+    --max-width: 1300px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    background: var(--black);
+    color: var(--white);
+
+    font-family: "Inter", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+img {
+    width: 100%;
+    display: block;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+#loading-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background: var(--black);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+#loading-screen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+}
+
+
+.loader-content {
+
+    width: min(90%, 700px);
+
+    text-align: center;
+}
+
+
+.loader-small,
+.eyebrow,
+.section-label {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    font-weight: 500;
+}
+
+
+.loader-content h1 {
+
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(45px, 7vw, 90px);
+
+    line-height: .9;
+
+    font-weight: 400;
+}
+
+
+.loader-content h1 em {
+
+    color: var(--gold);
+
+    font-weight: 500;
+}
+
+
+.loader-line {
+
+    width: 100px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 40px auto 25px;
+}
+
+
+.loader-content p {
+
+    color: var(--white-soft);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 35px 6%;
+
+    z-index: 100;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.logo {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+
+    font-weight: 600;
+}
+
+
+.logo span {
+
+    color: var(--gold);
+}
+
+
+.nav-text {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: var(--white-soft);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+.hero-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(200,169,107,.13),
+            transparent 35%
+        );
+
+    pointer-events: none;
+}
+
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 60%,
+            var(--black)
+        );
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+
+    padding: 120px 20px 80px;
+}
+
+
+.hero h1 {
+
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(60px, 10vw, 150px);
+
+    font-weight: 400;
+
+    line-height: .78;
+
+    letter-spacing: -4px;
+}
+
+
+.hero h1 span {
+
+    color: var(--white-soft);
+}
+
+
+.hero-subtitle {
+
+    margin-top: 45px;
+
+    color: var(--white-soft);
+
+    font-size: 15px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+}
+
+
+.hero h2 {
+
+    margin-top: 8px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(50px, 7vw, 90px);
+
+    font-weight: 400;
+
+    color: var(--gold);
+}
+
+
+.scroll-indicator {
+
+    margin-top: 80px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: var(--white-soft);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.scroll-line {
+
+    width: 1px;
+
+    height: 60px;
+
+    background: linear-gradient(
+        var(--gold),
+        transparent
+    );
+
+    animation: scrollMove 2s infinite;
+}
+
+
+@keyframes scrollMove {
+
+    0%, 100% {
+        transform: scaleY(.5);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+}
+
+
+/* =====================================================
+   INTRODUCTION
+===================================================== */
+
+.introduction {
+
+    position: relative;
+
+    max-width: var(--max-width);
+
+    margin: auto;
+
+    padding: 180px 7%;
+
+    display: grid;
+
+    grid-template-columns: 120px 1fr;
+
+    gap: 80px;
+}
+
+
+.section-number {
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    padding-top: 12px;
+}
+
+
+.intro-content {
+
+    max-width: 750px;
+}
+
+
+.intro-content h2,
+.evaluation-header h2,
+.petition-content > h2 {
+
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(50px, 7vw, 100px);
+
+    font-weight: 400;
+
+    line-height: .9;
+
+    letter-spacing: -2px;
+}
+
+
+.intro-content p {
+
+    max-width: 650px;
+
+    margin-top: 35px;
+
+    color: var(--white-soft);
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    font-weight: 300;
+}
+
+
+.intro-content .highlight-text {
+
+    color: var(--gold);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+}
+
+
+/* =====================================================
+   WONDERS
+===================================================== */
+
+.wonders-section {
+
+    padding: 150px 6%;
+
+    background: #101010;
+}
+
+
+.section-header {
+
+    max-width: var(--max-width);
+
+    margin: 0 auto 100px;
+}
+
+
+.section-header h2 {
+
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    font-weight: 400;
+
+    line-height: .85;
+}
+
+
+.section-header h2 em {
+
+    color: var(--gold);
+}
+
+
+.section-header p {
+
+    max-width: 550px;
+
+    margin-top: 40px;
+
+    color: var(--white-soft);
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+
+.wonders-grid {
+
+    max-width: var(--max-width);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 80px 40px;
+}
+
+
+.wonder-card {
+
+    position: relative;
+}
+
+
+.wonder-image {
+
+    height: 520px;
+
+    overflow: hidden;
+
+    background: #202020;
+}
+
+
+.wonder-image img {
+
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: grayscale(100%);
+
+    transition:
+        transform .8s ease,
+        filter .8s ease;
+}
+
+
+.wonder-card:hover img {
+
+    transform: scale(1.05);
+
+    filter: grayscale(0%);
+}
+
+
+.wonder-info {
+
+    position: relative;
+
+    padding: 25px 5px;
+}
+
+
+.wonder-info > span {
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+.wonder-info h3 {
+
+    margin-top: 12px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    line-height: .9;
+}
+
+
+.wonder-info p {
+
+    margin-top: 15px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   TRANSITION
+===================================================== */
+
+.transition-section {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px;
+}
+
+
+.transition-section span {
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.transition-section h2 {
+
+    margin-top: 35px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(80px, 13vw, 190px);
+
+    line-height: .7;
+
+    font-weight: 400;
+}
+
+
+.transition-section h2 em {
+
+    color: var(--gold);
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal-section {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 150px 6%;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+.reveal-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(200,169,107,.16),
+            transparent 45%
+        );
+}
+
+
+.reveal-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+
+.reveal-content h2 {
+
+    margin-top: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: var(--gold);
+
+    font-size: clamp(100px, 20vw, 280px);
+
+    line-height: .7;
+
+    font-weight: 400;
+}
+
+
+.reveal-line {
+
+    width: 80px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 50px auto;
+}
+
+
+.reveal-content h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    font-weight: 400;
+
+    line-height: .85;
+}
+
+
+.reveal-content h3 em {
+
+    color: var(--gold);
+}
+
+
+.main-photo {
+
+    width: min(600px, 90%);
+
+    height: 700px;
+
+    margin: 80px auto 0;
+
+    overflow: hidden;
+}
+
+
+.main-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.reveal-description {
+
+    max-width: 550px;
+
+    margin: 50px auto 0;
+
+    color: var(--white-soft);
+
+    line-height: 1.9;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   EVALUATION
+===================================================== */
+
+.evaluation-section {
+
+    padding: 180px 6%;
+
+    background: #101010;
+}
+
+
+.evaluation-header {
+
+    max-width: var(--max-width);
+
+    margin: auto;
+}
+
+
+.evaluation-list {
+
+    max-width: 1100px;
+
+    margin: 120px auto 0;
+}
+
+
+.evaluation-item {
+
+    min-height: 500px;
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr 400px;
+
+    align-items: center;
+
+    gap: 60px;
+
+    border-top: 1px solid #292929;
+}
+
+
+.evaluation-number {
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+.evaluation-text h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(45px, 5vw, 75px);
+
+    font-weight: 400;
+
+    line-height: .9;
+}
+
+
+.evaluation-text p {
+
+    max-width: 400px;
+
+    margin-top: 25px;
+
+    color: var(--white-soft);
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+.evaluation-image {
+
+    width: 100%;
+
+    height: 400px;
+
+    overflow: hidden;
+}
+
+
+.evaluation-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .8s ease;
+}
+
+
+.evaluation-item:hover .evaluation-image img {
+
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   CARTA
+===================================================== */
+
+.letter-section {
+
+    padding: 200px 7%;
+
+    text-align: center;
+}
+
+
+.letter {
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+
+.quote-mark {
+
+    margin-top: 40px;
+
+    color: var(--gold);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 130px;
+
+    height: 70px;
+}
+
+
+.letter p {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(35px, 5vw, 65px);
+
+    line-height: 1.05;
+
+    font-weight: 400;
+}
+
+
+.letter-line {
+
+    width: 60px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 60px auto 25px;
+}
+
+
+.signature {
+
+    color: var(--white-soft);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 24px;
+}
+
+
+/* =====================================================
+   PETITION
+===================================================== */
+
+.petition-section {
+
+    padding: 180px 6%;
+
+    background: #101010;
+
+    text-align: center;
+}
+
+
+.petition-content {
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+
+.petition-content > p {
+
+    max-width: 600px;
+
+    margin: 40px auto;
+
+    color: var(--white-soft);
+
+    line-height: 1.8;
+}
+
+
+.petition-box {
+
+    position: relative;
+
+    max-width: 650px;
+
+    margin: 80px auto 0;
+
+    padding: 80px 50px;
+
+    border: 1px solid #383838;
+
+    background: #141414;
+}
+
+
+.stamp {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 25px;
+
+    width: 75px;
+
+    height: 75px;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--gold);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+    transform: rotate(12deg);
+}
+
+
+.petition-box h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 40px;
+
+    font-weight: 400;
+}
+
+
+.petition-box p {
+
+    max-width: 450px;
+
+    margin: 25px auto 40px;
+
+    color: var(--white-soft);
+
+    line-height: 1.7;
+}
+
+
+.petition-box strong {
+
+    color: var(--gold);
+
+    font-weight: 400;
+}
+
+
+#signButton {
+
+    padding: 18px 35px;
+
+    border: 1px solid var(--gold);
+
+    background: transparent;
+
+    color: var(--white);
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+
+#signButton:hover {
+
+    background: var(--gold);
+
+    color: var(--black);
+}
+
+
+.petition-result {
+
+    display: none;
+
+    margin-top: 40px;
+
+    animation: resultAppear .6s ease;
+}
+
+
+.petition-result.active {
+
+    display: block;
+}
+
+
+.petition-result > span {
+
+    color: var(--gold);
+
+    font-size: 30px;
+}
+
+
+.petition-result p {
+
+    margin: 15px auto 5px;
+
+    color: var(--white);
+}
+
+
+.petition-result small {
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+@keyframes resultAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.final-section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px;
+}
+
+
+.final-content > span {
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.final-content h2 {
+
+    margin-top: 40px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    line-height: .85;
+
+    font-weight: 400;
+}
+
+
+.final-content p {
+
+    margin-top: 40px;
+
+    color: var(--white-soft);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+}
+
+
+.final-number {
+
+    margin-top: 80px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: var(--gold);
+
+    font-size: 100px;
+
+    opacity: .5;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    padding: 30px 6%;
+
+    border-top: 1px solid #222;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #666;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   ANIMAÇÕES AO ENTRAR NA TELA
+===================================================== */
+
+.reveal-on-scroll {
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+.reveal-on-scroll.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .introduction {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding: 120px 7%;
+    }
+
+
+    .wonders-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+
+    .wonder-image {
+
+        height: 500px;
+    }
+
+
+    .evaluation-item,
+    .evaluation-item.reverse {
+
+        grid-template-columns: 50px 1fr;
+
+        gap: 25px;
+
+        padding: 60px 0;
+    }
+
+
+    .evaluation-image {
+
+        grid-column: 2;
+
+        height: 450px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+
+        padding: 25px 6%;
+    }
+
+
+    .nav-text {
+
+        display: none;
+    }
+
+
+    .hero h1 {
+
+        letter-spacing: -2px;
+    }
+
+
+    .hero-content {
+
+        padding-top: 150px;
+    }
+
+
+    .introduction {
+
+        padding: 100px 7%;
+    }
+
+
+    .wonders-section {
+
+        padding: 100px 6%;
+    }
+
+
+    .wonder-image {
+
+        height: 400px;
+    }
+
+
+    .transition-section {
+
+        min-height: 60vh;
+    }
+
+
+    .reveal-section {
+
+        padding: 100px 6%;
+    }
+
+
+    .main-photo {
+
+        height: 550px;
+    }
+
+
+    .evaluation-section {
+
+        padding: 100px 6%;
+    }
+
+
+    .evaluation-list {
+
+        margin-top: 70px;
+    }
+
+
+    .evaluation-item,
+    .evaluation-item.reverse {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    .evaluation-number {
+
+        order: 1;
+    }
+
+
+    .evaluation-text {
+
+        order: 2;
+    }
+
+
+    .evaluation-image {
+
+        grid-column: auto;
+
+        order: 3;
+
+        height: 400px;
+    }
+
+
+    .letter-section {
+
+        padding: 130px 7%;
+    }
+
+
+    .petition-section {
+
+        padding: 120px 6%;
+    }
+
+
+    .petition-box {
+
+        padding: 70px 25px 50px;
+    }
+
+
+    .stamp {
+
+        width: 60px;
+
+        height: 60px;
+
+        font-size: 22px;
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        text-align: center;
+    }
+
+}
